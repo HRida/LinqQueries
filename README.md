@@ -1,9 +1,6 @@
 # LinqQueries
 
-Linq
-
-
-1*
+*1*
 
             var query = from p in db.Products
                         select  p;
@@ -13,7 +10,7 @@ Linq
 
 
 
-2*
+*2*
 
             //Select productID, ProductName, unitPrice from products
 
@@ -26,7 +23,7 @@ Linq
                         };
 
 
-3*
+*3*
 
 
             //Select  *  from products where ProductID = 1;
@@ -36,7 +33,7 @@ Linq
                         select p;
 
 
-4*
+*4*
 //Select  *  from products where supplierID = 5 and unitPrice > 20;
 
             var query = from p in db.Products
@@ -45,7 +42,7 @@ Linq
 
 
 
-5*
+*5*
 
 //Select  *  from products where supplierID = 5 OR p.SupplierID = 6;
 
@@ -56,7 +53,7 @@ Linq
             dataGridView1.DataSource = query.ToList();
 
 
-6*
+*6*
 
 //Select  *  from products order by productID dec
 
@@ -66,7 +63,7 @@ Linq
 
 
 
-7*
+*7*
 
   //Select  *  from products order by categoryID , unitPrice desc
 
@@ -74,33 +71,33 @@ Linq
                        orderby p.CategoryID ascending , p.UnitPrice descending
                         select p;
 
-8*
+*8*
 
   //Select  top 10  from products
 
             var query = (from p in db.Products
                          select p ) .Take(10) ;
 
-9*
+*9*
  var query = (from p in db.Products
                          select p ).First();
 //returns 1st recrd
 
 
-10*
+*10*
     //Select  top 10  from products order by pID
 
             var query = (from p in db.Products
                          orderby p.ProductID 
                          select p ).Take(10);
 
-11*
+*11*
   //Select  distinct  categoryID from products 
 
             var query = (from p in db.Products
                          select p.CategoryID ).Distinct();
 
-12*
+*12*
 
             //Select categoryID , count(categoryID) As newfield from products 
 
@@ -111,7 +108,7 @@ Linq
                             NewField = g.Count()
                         };
 
-13*
+*13*
 //Select categoryID , avg(unitprice) as newfield from products groupBy categoryID
 
             var query = from p in db.Products
@@ -121,7 +118,7 @@ Linq
                             NewField = g.Average(k => k.UnitPrice)
                         };
 
-14*
+*14*
  //Select categoryID , sum(unitprice) as newfield from products groupBy categoryID
 
             var query = from p in db.Products
@@ -132,7 +129,7 @@ Linq
                         };
 
 
-15*
+*15*
 
             //Select * from productswhere categoryID = 1 Union select * from products where categoryID = 2
 
@@ -145,7 +142,7 @@ Linq
                          select m );
 
 
-16*
+*16*
 
 
             //Select A.ProductID, A.productName, B.CategoryID, B.CtegoryName 
@@ -163,7 +160,7 @@ Linq
                             m.CategoryName
                         };
 
-17*
+*17*
 
 //Select * from products where productName like 'A%'
 
@@ -173,7 +170,7 @@ Linq
 
 
 
-18*
+*18*
  //Select * from products where productName like 'A%' and customerName like 'P%';
 
             var query = from c in db.Customers
@@ -190,7 +187,7 @@ Linq
 
 
 
-19* UPDATE :
+*19* UPDATE :
 
 
   var cc = from c in db.Customers
@@ -207,7 +204,7 @@ Linq
                      select c;
 
 
-20* INSERT:
+*20* INSERT:
 
 Product newProduct = new Product();
 
@@ -216,7 +213,7 @@ Product newProduct = new Product();
             db.SubmitChanges();
 
 
-21*  DELETE:
+*21*  DELETE:
 
  var pp = from p in db.Products
                      where p.ProductName.Contains("helicopter")  //  where p.ProductName.Equals("helicopter")
